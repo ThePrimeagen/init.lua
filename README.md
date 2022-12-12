@@ -1,5 +1,5 @@
 ### ThePrimeagen's init.lua
-This is based of the video `TODO: when video is uploaded.`
+This is based off the video `TODO: when video is uploaded.`
 
 For anyone that is interested in my vimrc, i will have a commit log below
 documenting each one of my commits (easy to C-f the change you want to know
