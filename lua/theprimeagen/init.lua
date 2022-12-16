@@ -25,7 +25,7 @@ autocmd('TextYankPost', {
 autocmd({"BufWritePre"}, {
     group = ThePrimeagenGroup,
     pattern = "*",
-    command = "%s/\\s\\+$//e",
+    command = [[%s/\s\+$//e]],
 })
 
 vim.g.netrw_browse_split = 0
