@@ -47,9 +47,9 @@ return require('packer').startup(function(use)
 		  {'L3MON4D3/LuaSnip'},
 		  {'rafamadriz/friendly-snippets'},
 
-			-- prettier format
-			{'jose-elias-alvarez/null-ls.nvim'}
-			{'MunifTanjim/prettier.nvim'}
+		  -- prettier format
+		  {'jose-elias-alvarez/null-ls.nvim'},
+		  {'MunifTanjim/prettier.nvim'},
 	  }
   }
 
