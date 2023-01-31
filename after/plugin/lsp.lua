@@ -22,7 +22,7 @@ lsp.configure('sumneko_lua', {
 
 lsp.configure('tsserver', {
   root_dir = nvim_lsp.util.root_pattern("package.json"),
-  -- single_file_support = false,
+  single_file_support = false,
 })
 
 local cmp = require('cmp')
