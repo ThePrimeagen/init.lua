@@ -25,6 +25,13 @@ lsp.configure('tsserver', {
   single_file_support = false,
 })
 
+lsp.configure('denols', {
+  root_dir = nvim_lsp.util.root_pattern("deno.jsonc"),
+  init_options = {
+    lint = true,
+  },
+})
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
