@@ -1,10 +1,15 @@
-local lsp = require("lsp-zero")
+local  lok, lsp = pcall(require, 'lsp-zero')
+if not lok then return end
+
+local  cok, cmp = pcall(require, 'cmp')
+if not cok then return end
 
 lsp.preset("recommended")
 
 lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
+  'lua_ls',
 })
 
 -- Fix Undefined global 'vim'
@@ -19,7 +24,6 @@ lsp.configure('lua-language-server', {
 })
 
 
-local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),

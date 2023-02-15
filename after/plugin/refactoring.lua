@@ -1,5 +1,5 @@
-require('refactoring').setup({})
+local ok, plugin = pcall(require, 'refactoring')
+if not ok then return end
 
-vim.api.nvim_set_keymap("v", "<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
-
-
+plugin.setup({})
+vim.api.nvim_set_keymap("v", "<leader>ri", [[ <Esc><Cmd>lua plugin.refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})

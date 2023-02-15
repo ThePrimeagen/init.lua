@@ -15,4 +15,12 @@ about though i would just suggest `git log -S`).
 * [4a96e645](https://github.com/ThePrimeagen/init.lua/commit/4a96e6457b0a0241ca7361ce62177aa6b9a33a38) fugitive mappings for push and pull
 * [a3bad06a](https://github.com/ThePrimeagen/init.lua/commit/a3bad06a4681c322538d609aa1c0bd18880f77c6) disabled eslint.  driving me crazy
 
+### Extra credit (only for the fearless!!)
+### Automatically bootstrap my configuration with two steps.
+1. ./dev
+2. nvim
 
+#### 100% Pure Coconut Oil.
+The two steps above will completely remove your Neovim endowment and then reload
+it.  The first Neovim run loads all packages, and the second run causes
+Treesitter to install language highlighting.
