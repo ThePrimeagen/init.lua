@@ -1,8 +1,8 @@
--- Use protected call so we don't error on first use.
+-- TODO: Use protected call so we don't error on first use.
 local packer_ok, packer = pcall(require, 'packer')
 if not packer_ok then return end
 
--- Have packer use a popup window
+-- TODO: Have packer use a popup window
 packer.init {
   display = {
     open_fn = function()
@@ -97,7 +97,7 @@ return packer.startup(function(use)
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
 
-  -- Auto compile and install plugins when packer is bootstrapped.
+  -- TODO: Auto compile and install plugins when packer is bootstrapped.
   if vim.g.nvim_bootstrapped == 1 then
     packer.sync()
   end
