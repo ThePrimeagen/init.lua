@@ -1,9 +1,22 @@
+-- TODO: Add file exists function.
+-- https://www.grepper.com/answers/120776/how+to+check+if+file+exists+lua
+local function file_exists(name)
+    local f=io.open(name,'r')
+    if f ~= nil then io.close() return true else return false end
+end
+
+-- TODO: Bootstrap when necessary.
+require("theprimeagen.bootstrap")
+
+-- required modules.
+require("theprimeagen.packer")
 require("theprimeagen.set")
 require("theprimeagen.remap")
 
--- DO NOT INCLUDE THIS
-vim.opt.rtp:append("~/personal/streamer-tools")
--- DO NOT INCLUDE THIS
+-- TODO: Don't use my streaming tools.
+if file_exists("~/personal/streamer-tools") then
+    vim.opt.rtp:append("~/personal/streamer-tools")
+end
 
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup('ThePrimeagen', {})

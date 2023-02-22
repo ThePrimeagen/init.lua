@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
-rm -rf ~/.config/nvim
-ln -s $(pwd) ~/.config/nvim
-
+rm -rfv ~/.cache/nvim
+rm -rfv ~/.config/nvim
+rm -rfv ~/.local/share/nvim
+rm -rfv ~/.local/state/nvim
+rm -rfv $(pwd)/plugin
+ln -fsv $(pwd) ~/.config/nvim
