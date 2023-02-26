@@ -69,6 +69,10 @@ return require('packer').startup(function(use)
   use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
+  use({
+      "aserowy/tmux.nvim",
+      config = function() return require("tmux").setup() end
+  })
 
 end)
 
