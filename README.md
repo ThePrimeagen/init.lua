@@ -16,3 +16,6 @@ about though i would just suggest `git log -S`).
 * [a3bad06a](https://github.com/ThePrimeagen/init.lua/commit/a3bad06a4681c322538d609aa1c0bd18880f77c6) disabled eslint.  driving me crazy
 
 
+### FAQ
+#### I get nvim-treesitter errors, what should I do?
+Ensure you're using the latest versions of neovim and nvim-treesitter. For me, [building neovim from source](https://github.com/neovim/neovim/wiki/Building-Neovim) resolved my issues with nvim-treesitter.
