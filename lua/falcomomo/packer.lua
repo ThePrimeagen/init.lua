@@ -13,6 +13,9 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+
   use({
 	  'rose-pine/neovim',
 	  as = 'rose-pine',
@@ -20,6 +23,20 @@ return require('packer').startup(function(use)
 		  vim.cmd('colorscheme rose-pine')
 	  end
   })
+
+  use({'Mofiqul/dracula.nvim',
+  config = function()
+      vim.cmd('colorscheme dracula')
+  end
+})
+
+use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+}
+
+
+use("lukas-reineke/indent-blankline.nvim")
 
   use({
       "folke/trouble.nvim",
@@ -41,6 +58,7 @@ return require('packer').startup(function(use)
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
   use("nvim-treesitter/nvim-treesitter-context");
+  use("preservim/nerdcommenter")
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
