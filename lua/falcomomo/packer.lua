@@ -32,7 +32,6 @@ use {
 		  vim.cmd('colorscheme rose-pine')
 	  end
   })
-
   use({'Mofiqul/dracula.nvim',
   config = function()
       vim.cmd('colorscheme dracula')
@@ -66,6 +65,7 @@ use("lukas-reineke/indent-blankline.nvim")
   use("theprimeagen/refactoring.nvim")
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
+  use("idanarye/vim-merginal")
   use("nvim-treesitter/nvim-treesitter-context");
   use("preservim/nerdcommenter")
 

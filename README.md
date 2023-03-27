@@ -11,3 +11,4 @@ Added the Mofiqul/dracula.nvim theme and using lualine for the modeline.
 Also now using indent-blankline for whitespace highlighting, useful in Python.
 Using nerdcommenter for toggle commenting.
 Using Navbuddy for navigating code quickly.
+Using Merginal for git branching.
