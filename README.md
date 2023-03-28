@@ -12,3 +12,7 @@ Also now using indent-blankline for whitespace highlighting, useful in Python.
 Using nerdcommenter for toggle commenting.
 Using Navbuddy for navigating code quickly.
 Using Merginal for git branching.
+Using auto-pairs for bracket completion.
+Using vim-visual-multi for multiple-cursors.
+Using which-key.
+Using legendary for a which-key extension although not sure how it works.

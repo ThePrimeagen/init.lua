@@ -14,7 +14,26 @@ return require('packer').startup(function(use)
   }
 
 
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+use({
+  'mrjones2014/legendary.nvim',
+  -- sqlite is only needed if you want to use frecency sorting
+  -- requires = 'kkharji/sqlite.lua'
+})
+
+use {
+  "folke/which-key.nvim",
+  config = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+    require("which-key").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
 
 use {
     "SmiteshP/nvim-navbuddy",
@@ -25,13 +44,8 @@ use {
     }
 }
 
-  use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
-  })
+use("mg979/vim-visual-multi")
+
   use({'Mofiqul/dracula.nvim',
   config = function()
       vim.cmd('colorscheme dracula')
@@ -68,7 +82,7 @@ use("lukas-reineke/indent-blankline.nvim")
   use("idanarye/vim-merginal")
   use("nvim-treesitter/nvim-treesitter-context");
   use("preservim/nerdcommenter")
-
+    use("jiangmiao/auto-pairs")
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',

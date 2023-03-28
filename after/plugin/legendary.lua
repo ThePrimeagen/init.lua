@@ -1,0 +1,2 @@
+--require('legendary').setup()
+--require('legendary').find({ filters = { require('legendary.filters').current_mode() } })
