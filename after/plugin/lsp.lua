@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local nvim_lsp = require('lspconfig')
 
 lsp.preset("recommended")
 
@@ -10,6 +11,17 @@ lsp.ensure_installed({
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
+lsp.configure('tsserver', {
+  root_dir = nvim_lsp.util.root_pattern("package.json"),
+  single_file_support = false,
+})
+
+lsp.configure('denols', {
+  root_dir = nvim_lsp.util.root_pattern("deno.jsonc"),
+  init_options = {
+    lint = true,
+  },
+})
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
