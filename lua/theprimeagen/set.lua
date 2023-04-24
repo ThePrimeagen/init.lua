@@ -30,3 +30,21 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
+if vim.loop.os_uname().sysname == 'Windows_NT' then
+
+    -- Use Powershell Core, if not available Windows Powershell
+    if vim.fn.executable('pwsh') == 1 then
+        vim.opt.shell = 'pwsh'
+    else
+        vim.opt.shell = 'powershell'
+    end
+
+    vim.opt.shellcmdflag =
+    [[-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command
+    [Console]::InputEncoding=[Console]::OutputEncoding =
+    [System.Text.Encoding]::UTF8;]]
+    vim.opt.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    vim.opt.shellquote = ''
+    vim.opt.shellxquote = ''
+end
