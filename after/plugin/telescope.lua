@@ -5,4 +5,8 @@ vim.keymap.set('n', '<leader>ps', function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>o', function()
+    local selection = require('telescope.actions.state').get_selected_entry()
+    vim.fn.jobstart("xdg-open " .. selection.path)
+end)
 
