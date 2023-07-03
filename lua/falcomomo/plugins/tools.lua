@@ -10,12 +10,18 @@ local tools = {
             "nvim-telescope/telescope-symbols.nvim",
             "nvim-telescope/telescope-project.nvim",
             "nvim-telescope/telescope-dap.nvim",
+            --"nvim-telescope/telescope-yank-history.nvim"
         },
         event = "VeryLazy",
     },
     -- Telescope fzf plugin
     {
         "nvim-telescope/telescope-fzf-native.nvim", build = "make",
+    },
+    -- Yanky
+    {
+        "gbprod/yanky.nvim",
+        config = require("tools.yanky"),
     },
     -- Harpoon
     {
@@ -27,12 +33,13 @@ local tools = {
         --branch = 'v1.x',
         config = require("tools.lspzero"),
         dependencies = {
-            -- LSP config
+                    -- LSP Support
             {
                 'neovim/nvim-lspconfig',
                 config = require("tools.lspconfig"),
-                dependencies = {
-                    -- LSP Support
+            },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
                     {
                         "glepnir/lspsaga.nvim",
                         config = require("tools.lspsaga"),
@@ -42,6 +49,24 @@ local tools = {
                             { "nvim-treesitter/nvim-treesitter" },
                         },
                     },
+                    -- LSP signature
+                    {
+                        "ray-x/lsp_signature.nvim",
+                        config = require("tools.lsp_signature"),
+                    },
+                    -- Autocompletion
+		  {'hrsh7th/nvim-cmp'},
+		  {'hrsh7th/cmp-buffer'},
+		  {'hrsh7th/cmp-path'},
+		  {'saadparwaiz1/cmp_luasnip'},
+		  {'hrsh7th/cmp-nvim-lsp'},
+		  {'hrsh7th/cmp-nvim-lua'},
+
+		  -- Snippets
+		  {'L3MON4D3/LuaSnip'},
+		  {'rafamadriz/friendly-snippets'},
+        }
+    },
                     -- Navbuddy
                     {
                         "SmiteshP/nvim-navbuddy",
@@ -51,16 +76,6 @@ local tools = {
                             "MunifTanjim/nui.nvim",
                         },
                     },
-                    -- LSP signature
-                    {
-                        "ray-x/lsp_signature.nvim",
-                        config = require("tools.lsp_signature"),
-                    },
-                }
-            },
-            { 'williamboman/mason-lspconfig.nvim' },
-        }
-    },
     -- Neodev
     {
         "folke/neodev.nvim",
