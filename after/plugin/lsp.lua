@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local api = vim.api
 
 lsp.preset("recommended")
 
@@ -6,19 +7,20 @@ lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
   'pyright',
-  'ruff_lsp'
+  'ruff_lsp',
+  'lua_ls'
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('lua-language-server', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-})
+--lsp.configure('lua-language-server', {
+    --settings = {
+        --Lua = {
+            --diagnostics = {
+                --globals = { 'vim' }
+            --}
+        --}
+    --}
+--})
 
 
 local cmp = require('cmp')
@@ -68,3 +70,12 @@ vim.diagnostic.config({
     virtual_text = true
 })
 
+require("lspconfig").lua_ls.setup({
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' },
+            }
+        },
+    },
+})

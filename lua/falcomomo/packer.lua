@@ -8,9 +8,15 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+	  'nvim-telescope/telescope.nvim',
 	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
+	  requires = { 'nvim-lua/plenary.nvim',
+                    'nvim-telescope/telescope-file-browser.nvim',
+                    'nvim-telescope/telescope-ui-select.nvim',
+                    'nvim-telescope/telescope-symbols.nvim',
+                    'nvim-telescope/telescope-project.nvim',
+                    'nvim-telescope/telescope-dap.nvim'
+   }
   }
 
 
@@ -34,6 +40,7 @@ use {
     }
   end
 }
+use {"Cassin01/wf.nvim", tag = "*", config = function() require("wf").setup() end}
 
 use {
     "SmiteshP/nvim-navbuddy",
@@ -105,11 +112,17 @@ use("lukas-reineke/indent-blankline.nvim")
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
+  use {"glepnir/lspsaga.nvim",  branch = "main",  requires = {{"nvim-tree/nvim-web-devicons"}, {"nvim-treesitter/nvim-treesitter"}}}
+  use("mfussenegger/nvim-dap")
 
   use("folke/zen-mode.nvim")
   use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
 
+  use{"folke/noice.nvim", requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }}
+
+  -- my plugins
+  use "~/dev/projects/whatsoccurring.nvim"
 end)
 
