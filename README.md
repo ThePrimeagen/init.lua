@@ -1,18 +1,25 @@
-### ThePrimeagen's init.lua
-Prerequisite: install [ripgrep](https://github.com/BurntSushi/ripgrep).
+## Falcomomo's init.lua
 
-[The full video of him setting up this repo](https://www.youtube.com/watch?v=w7i4amO_zaE)
+Heavily based on the config by [ema2159](https://github.com/ema2159/nvimconfig).
 
-For anyone that is interested in my vimrc, i will have a commit log below
-documenting each one of my commits (easy to C-f the change you want to know
-about though i would just suggest `git log -S`).
+### Plugin summary
 
-Added the Mofiqul/dracula.nvim theme and using lualine for the modeline.
-Also now using indent-blankline for whitespace highlighting, useful in Python.
-Using nerdcommenter for toggle commenting.
-Using Navbuddy for navigating code quickly.
-Using Merginal for git branching.
-Using auto-pairs for bracket completion.
-Using vim-visual-multi for multiple-cursors.
-Using which-key.
-Using legendary for a which-key extension although not sure how it works.
+* Plugin management by [lazy](https://github.com/folke/lazy.nvim)
+* LSP configured by [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim)
+* LSP saga enhanced ui [lsp saga](https://github.com/nvimdev/lspsaga.nvim)
+* NVIM dap ui [nvim dap ui](https://github.com/rcarriga/nvim-dap-ui)
+* Telescope with ivy style searching [telescope](https://github.com/nvim-telescope/telescope.nvim)
+* Notify and messages etc with noice [noice](https://github.com/folke/noice.nvim)
+
+### How it works
+
+init.lua loads up lazy. 
+
+Set up the basic options in the core folder with options and keymaps.
+
+Lazy configures everything.
+In the plugins folder the init just asks lazy to load everything each of the 
+editor, themes, tools, and ui files. Each of those files is just the initial 
+configuration for lazy to load packages. The lazy configurations reference
+specific config within the config subfolders if the package requires anything.
+
