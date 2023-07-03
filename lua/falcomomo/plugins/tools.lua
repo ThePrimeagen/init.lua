@@ -10,6 +10,12 @@ local tools = {
             "nvim-telescope/telescope-symbols.nvim",
             "nvim-telescope/telescope-project.nvim",
             "nvim-telescope/telescope-dap.nvim",
+    -- Yanky
+    {
+        "gbprod/yanky.nvim",
+        config = require("tools.yanky"),
+    },
+
             --"nvim-telescope/telescope-yank-history.nvim"
         },
         event = "VeryLazy",
@@ -17,11 +23,6 @@ local tools = {
     -- Telescope fzf plugin
     {
         "nvim-telescope/telescope-fzf-native.nvim", build = "make",
-    },
-    -- Yanky
-    {
-        "gbprod/yanky.nvim",
-        config = require("tools.yanky"),
     },
     -- Harpoon
     {

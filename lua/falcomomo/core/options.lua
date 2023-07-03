@@ -23,7 +23,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
-vim.opt.autochdir = true -- make current buffer dir the cwd
+--vim.opt.autochdir = true -- make current buffer dir the cwd
 
 -- Case with searches
 vim.opt.ignorecase = true

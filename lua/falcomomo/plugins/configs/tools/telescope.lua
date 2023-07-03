@@ -43,6 +43,9 @@ return function()
             ["ui-select"] = {
                 theme = "dropdown"
             },
+            ["yank_history"] = {
+
+            }
 
         }
     })
@@ -54,7 +57,7 @@ return function()
     require('telescope').load_extension('notify')
     require('telescope').load_extension('project')
     require('telescope').load_extension('dap')
-    --require('telescope').load_extension('yank_history')
+    require('telescope').load_extension('yank_history')
     local builtin = require('telescope.builtin')
     local extensions = require('telescope').extensions
 
@@ -66,7 +69,7 @@ return function()
     vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = "Find files" })
     vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = "Recent files" })
     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Open buffers" })
-    --vim.keymap.set('n', '<leader>fy', extensions.yank_history.yank_history, { desc = "Yank history"})
+    vim.keymap.set('n', '<leader>fy', extensions.yank_history.yank_history, { desc = "Yank history"})
     vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = "Git files" })
     vim.keymap.set('n', '<M-x>', builtin.commands, { desc = "Commands" })
     vim.keymap.set('n', '<leader>ps', function()
