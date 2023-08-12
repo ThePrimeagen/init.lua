@@ -3,6 +3,7 @@ require("theprimeagen.remap")
 
 -- DO NOT INCLUDE THIS
 vim.opt.rtp:append("~/personal/streamer-tools")
+vim.opt.rtp:append("~/personal/lsp-debug-tools.nvim/")
 -- DO NOT INCLUDE THIS
 
 local augroup = vim.api.nvim_create_augroup
