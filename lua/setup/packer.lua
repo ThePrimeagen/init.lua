@@ -10,11 +10,9 @@ return require('packer').startup(function(use)
   use({
     "jackMort/ChatGPT.nvim",
       config = function()
-        require("chatgpt").setup {
-            api_key_cmd = "echo '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'",
-        }
+        require("chatgpt").setup()
     end,
-    requires = {
+    requires =  {
         "MunifTanjim/nui.nvim",
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope.nvim"
