@@ -7,6 +7,21 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  use({
+    "jackMort/ChatGPT.nvim",
+      config = function()
+        require("chatgpt").setup {
+            api_key_cmd = "echo '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'",
+        }
+    end,
+    requires = {
+        "MunifTanjim/nui.nvim",
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim"
+    }
+  })
+
+  use 'voldikss/vim-floaterm'
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
 	  -- or                            , branch = '0.1.x',
@@ -19,6 +34,11 @@ return require('packer').startup(function(use)
 	  config = function()
 		  vim.cmd('colorscheme rose-pine')
 	  end
+  })
+
+  use({
+    "christoomey/vim-tmux-navigator",
+    lazy = false
   })
 
   use({
@@ -73,6 +93,14 @@ return require('packer').startup(function(use)
   use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
-
+  use "lukas-reineke/indent-blankline.nvim"
+  use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
+  -- These optional plugins should be loaded directly because of a bug in Packer lazy loading
+use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
+use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
+use 'romgrk/barbar.nvim'
 end)
 
