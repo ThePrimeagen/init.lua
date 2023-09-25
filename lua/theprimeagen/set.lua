@@ -1,32 +1,37 @@
-vim.opt.guicursor = ""
+local options = {
+  guicursor = ""
 
-vim.opt.nu = true
-vim.opt.relativenumber = true
+  nu = true
+  relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+  tabstop = 4
+  softtabstop = 4
+  shiftwidth = 4
+  expandtab = true
 
-vim.opt.smartindent = true
+  smartindent = true
 
-vim.opt.wrap = false
+  wrap = false
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
+  swapfile = false
+  backup = false
+  undodir = os.getenv("HOME") .. "/.vim/undodir"
+  undofile = true
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+  hlsearch = false
+  incsearch = true
 
-vim.opt.termguicolors = true
+  termguicolors = true
 
-vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
+  scrolloff = 8
+  signcolumn = "yes"
+  isfname:append("@-@")
 
-vim.opt.updatetime = 50
+  updatetime = 50
 
-vim.opt.colorcolumn = "80"
+  colorcolumn = "80"
+}
 
+for k, v in pairs(options) do
+  vim.opt[k]  = v
+end
