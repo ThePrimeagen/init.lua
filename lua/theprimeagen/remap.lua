@@ -45,7 +45,19 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
+--vim.keymap.set("n", "<leader><leader>", function()
+--    vim.cmd("so")
+--end)
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	-- save file
+	vim.cmd.w()
+	-- if lua file and is in nvim config dir :so the file
+	local current_file_path = vim.api.nvim_buf_get_name(0)
+	local is_in_config = current_file_path:find("^"..vim.fn.stdpath("config")) ~= nil
+	local is_lua = current_file_path:find(".lua$") ~= nil
+	if (is_in_config and is_lua) then
+		vim.cmd.so()
+	end
+	-- probally I could do to another languages
 end)
 
