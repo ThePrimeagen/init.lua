@@ -47,11 +47,9 @@ return require('packer').startup(function(use)
   use("nvim-treesitter/nvim-treesitter-context");
 
   use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v1.x',
+      'neovim/nvim-lspconfig',
 	  requires = {
 		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},
 		  {'williamboman/mason.nvim'},
 		  {'williamboman/mason-lspconfig.nvim'},
 
