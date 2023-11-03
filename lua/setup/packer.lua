@@ -6,7 +6,6 @@ vim.cmd.packadd('packer.nvim')
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-
   use({
     "jackMort/ChatGPT.nvim",
       config = function()
@@ -62,6 +61,15 @@ return require('packer').startup(function(use)
   use("theprimeagen/refactoring.nvim")
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
+  use({
+    "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      config = function()
+          require("nvim-surround").setup({
+          -- Configuration here, or leave empty to use defaults
+          })
+      end
+  })
   use("nvim-treesitter/nvim-treesitter-context");
 
   use {
@@ -91,6 +99,7 @@ return require('packer').startup(function(use)
   use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
+  use("mg979/vim-visual-multi")
   use "lukas-reineke/indent-blankline.nvim"
   use {
       'nvim-lualine/lualine.nvim',
@@ -100,5 +109,10 @@ return require('packer').startup(function(use)
 use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
 use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
 use 'romgrk/barbar.nvim'
+use {
+  'dgrbrady/nvim-docker',
+  requires = {'nvim-lua/plenary.nvim', 'MunifTanjim/nui.nvim'},
+  rocks = '4O4/reactivex' -- ReactiveX Lua implementation
+}
 end)
 
