@@ -6,6 +6,12 @@ vim.cmd.packadd('packer.nvim')
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+  use ({
+    "lukas-reineke/indent-blankline.nvim",
+    config = function ()
+      require("ibl").setup()
+    end
+  })
   use({
     "jackMort/ChatGPT.nvim",
       config = function()
@@ -18,24 +24,17 @@ return require('packer').startup(function(use)
     }
   })
 
-  use 'voldikss/vim-floaterm'
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
-	  -- or                            , branch = '0.1.x',
+	  'nvim-telescope/telescope.nvim', tag = '0.1.4',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
+	  'catppuccin/nvim',
+	  as = 'catppuccin',
 	  config = function()
-		  vim.cmd('colorscheme rose-pine')
+		  vim.cmd('colorscheme catppuccin-mocha')
 	  end
-  })
-
-  use({
-    "christoomey/vim-tmux-navigator",
-    lazy = false
   })
 
   use({
@@ -43,33 +42,20 @@ return require('packer').startup(function(use)
       config = function()
           require("trouble").setup {
               icons = false,
-              -- your configuration comes here
-              -- or leave it empty to use the default settings
-              -- refer to the configuration section below
           }
       end
   })
-
   use {
-			'nvim-treesitter/nvim-treesitter',
-			run = function()
-				local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-				ts_update()
-			end,}
+	'nvim-treesitter/nvim-treesitter',
+	run = function()
+		local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+		ts_update()
+	end,
+  }
   use("nvim-treesitter/playground")
   use("theprimeagen/harpoon")
   use("theprimeagen/refactoring.nvim")
   use("mbbill/undotree")
-  use("tpope/vim-fugitive")
-  use({
-    "kylechui/nvim-surround",
-      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-      config = function()
-          require("nvim-surround").setup({
-          -- Configuration here, or leave empty to use defaults
-          })
-      end
-  })
   use("nvim-treesitter/nvim-treesitter-context");
 
   use {
@@ -95,12 +81,10 @@ return require('packer').startup(function(use)
 	  }
   }
 
-  use("folke/zen-mode.nvim")
   use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
   use("mg979/vim-visual-multi")
-  use "lukas-reineke/indent-blankline.nvim"
   use {
       'nvim-lualine/lualine.nvim',
       requires = { 'nvim-tree/nvim-web-devicons', opt = true }
@@ -108,11 +92,9 @@ return require('packer').startup(function(use)
   -- These optional plugins should be loaded directly because of a bug in Packer lazy loading
 use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
 use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
-use 'romgrk/barbar.nvim'
-use {
-  'dgrbrady/nvim-docker',
-  requires = {'nvim-lua/plenary.nvim', 'MunifTanjim/nui.nvim'},
-  rocks = '4O4/reactivex' -- ReactiveX Lua implementation
-}
+use 'lukas-reineke/headlines.nvim'
+use 'dhruvasagar/vim-table-mode'
 end)
+
+
 
