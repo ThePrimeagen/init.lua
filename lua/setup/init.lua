@@ -1,3 +1,4 @@
+require("setup.lazy")
 require("setup.set")
 require("setup.remap")
 
