@@ -19,15 +19,20 @@ local plugins = {
   'dhruvasagar/vim-table-mode',
   'folke/trouble.nvim',
   'nvim-treesitter/playground',
-  'theprimeagen/harpoon',
-  "github/copilot.vim",
+  'github/copilot.vim',
   "eandrju/cellular-automaton.nvim",
   "laytan/cloak.nvim",
   "mg979/vim-visual-multi",
   "theprimeagen/refactoring.nvim",
   "mbbill/undotree",
   "nvim-treesitter/nvim-treesitter-context",
+  "nvim-lua/plenary.nvim",
   'lukas-reineke/indent-blankline.nvim',
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { { "nvim-lua/plenary.nvim" } }
+  },
   {
     "jackMort/ChatGPT.nvim",
     dependencies = {
