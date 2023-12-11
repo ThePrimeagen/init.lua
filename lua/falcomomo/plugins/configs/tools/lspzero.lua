@@ -8,7 +8,8 @@ return function()
         'rust_analyzer',
         'pyright',
         'ruff_lsp',
-        'lua_ls'
+        'lua_ls',
+        'omnisharp'
     })
 
 
@@ -58,4 +59,6 @@ return function()
     vim.diagnostic.config({
         virtual_text = true
     })
+
+    require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 end

@@ -31,7 +31,7 @@ local tools = {
     },
     {
         'VonHeikemen/lsp-zero.nvim',
-        --branch = 'v1.x',
+        branch = 'v2.x',
         config = require("tools.lspzero"),
         dependencies = {
                     -- LSP Support
@@ -77,7 +77,7 @@ local tools = {
                             "MunifTanjim/nui.nvim",
                         },
                     },
-    -- Neodev
+     --Neodev
     {
         "folke/neodev.nvim",
         config = require("tools.neodev"),
@@ -141,6 +141,12 @@ local tools = {
         dependencies = { "nvim-lua/plenary.nvim" },
         event = "VeryLazy",
     },
+    -- Whatsoccurring
+    {
+        "nvim_plugins/whatsoccurring.nvim",
+        --config = true,
+        dev = true
+    }
 
 }
 
