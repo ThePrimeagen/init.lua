@@ -8,7 +8,8 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+	  -- Telescope 0.1.4 is required for Neovim 0.9.5: https://github.com/nvim-telescope/telescope.nvim/issues/2735#issuecomment-1803736814
+	  'nvim-telescope/telescope.nvim', tag = '0.1.4',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
