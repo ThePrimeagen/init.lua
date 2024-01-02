@@ -1,9 +1,16 @@
 require("theprimeagen.set")
 require("theprimeagen.remap")
 
+require("theprimeagen.lazy_init")
+
+
 -- DO NOT INCLUDE THIS
-vim.opt.rtp:append("~/personal/streamer-tools")
-vim.opt.rtp:append("~/personal/lsp-debug-tools.nvim/")
+
+-- If i want to keep doing lsp debugging
+-- function restart_htmx_lsp()
+--     require("lsp-debug-tools").restart({ expected = {}, name = "htmx-lsp", cmd = { "htmx-lsp", "--level", "DEBUG" }, root_dir = vim.loop.cwd(), });
+-- end
+
 -- DO NOT INCLUDE THIS
 
 local augroup = vim.api.nvim_create_augroup
@@ -15,6 +22,12 @@ local yank_group = augroup('HighlightYank', {})
 function R(name)
     require("plenary.reload").reload_module(name)
 end
+
+vim.filetype.add({
+    extension = {
+        templ = 'templ',
+    }
+})
 
 autocmd('TextYankPost', {
     group = yank_group,
