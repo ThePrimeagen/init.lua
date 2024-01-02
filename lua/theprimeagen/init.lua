@@ -3,7 +3,7 @@ require("theprimeagen.remap")
 
 require("theprimeagen.lazy_init")
 
-
+-- DO.not
 -- DO NOT INCLUDE THIS
 
 -- If i want to keep doing lsp debugging
@@ -12,6 +12,7 @@ require("theprimeagen.lazy_init")
 -- end
 
 -- DO NOT INCLUDE THIS
+-- DO.not
 
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup('ThePrimeagen', {})
