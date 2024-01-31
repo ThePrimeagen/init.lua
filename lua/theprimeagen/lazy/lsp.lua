@@ -45,7 +45,7 @@ return {
                         settings = {
                             Lua = {
                                 diagnostics = {
-                                    globals = { "vim" }
+                                    globals = { "vim", "it", "describe", "before_each", "after_each" },
                                 }
                             }
                         }
@@ -77,7 +77,7 @@ return {
         })
 
         vim.diagnostic.config({
-            update_in_insert = true,
+            -- update_in_insert = true,
             float = {
                 focusable = false,
                 style = "minimal",

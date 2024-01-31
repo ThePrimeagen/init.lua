@@ -19,9 +19,6 @@ return {
             neogen.generate({ type = "type" })
         end)
 
-        vim.keymap.set("n", "<leader>nd", function()
-            neogen.generate({ type = "typedef" })
-        end)
     end,
     -- Uncomment next line if you want to follow only stable versions
     -- version = "*"
