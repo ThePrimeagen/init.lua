@@ -28,6 +28,10 @@ local local_plugins = {
             --]]
         end
     },
+    {
+        "chat-is-dumb", dir = "~/personal/chat_is_dumb",
+        config = function() end
+    },
 }
 
 return local_plugins
