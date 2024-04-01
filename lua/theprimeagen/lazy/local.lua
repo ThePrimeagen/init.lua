@@ -29,7 +29,7 @@ local local_plugins = {
         end
     },
     {
-        "chat-is-dumb", dir = "~/personal/chat_is_dumb",
+        "vim-with-me", dir = "~/personal/vim-with-me",
         config = function() end
     },
 }
