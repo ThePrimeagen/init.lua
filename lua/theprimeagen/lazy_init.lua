@@ -17,7 +17,7 @@ require("lazy").setup({
 })
 --[[
 require("lazy").setup({
-  use("~/personal/harpoon")
+  use("theprimeagen/harpoon")
 
   use("theprimeagen/vim-be-good")
   use("theprimeagen/refactoring.nvim")

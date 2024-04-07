@@ -1,7 +1,8 @@
 -- This file can be loaded by calling `lua require("plugins")` from your init.vim
 
--- Only required if you have packer configured as `opt`
+-- Only required if you have packer configured
 vim.cmd.packadd("packer.nvim")
+
 
 return require("packer").startup(function(use)
   -- Packer can manage itself
@@ -35,6 +36,7 @@ return require("packer").startup(function(use)
       end
   })
 
+  use {"nvim-neotest/nvim.io"}
   use {
 			'nvim-treesitter/nvim-treesitter',
 			run = function()
@@ -43,7 +45,8 @@ return require("packer").startup(function(use)
 			end,}
   use("nvim-treesitter/playground")
 
-  use("~/personal/harpoon")
+
+  use("theprimeagen/harpoon", branch = "harpoon2")
 
   use("theprimeagen/vim-be-good")
   use("theprimeagen/refactoring.nvim")
