@@ -1,5 +1,8 @@
 return {
     {
+        "nvim-neotest/nvim-nio"
+    },
+    {
         "nvim-neotest/neotest",
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -27,4 +30,3 @@ return {
         end,
     },
 }
-

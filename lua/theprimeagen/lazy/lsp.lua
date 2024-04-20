@@ -28,13 +28,41 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
-                "gopls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
+                    }
+                end,
+
+                ["rust_analyzer"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.rust_analyzer.setup {
+                        capabilities = capabilities,
+                        cmd = { "/home/aazev/.cargo/bin/rust-analyzer" },
+                        cargo = {
+                            loadOutDirsFromCheck = true
+                        },
+                        procMacro = {
+                            enable = true
+                        },
+                        checkOnSave = {
+                            command = "clippy"
+                        },
+                        formatOnSave = true,
+                        inlay_hints = {
+                            show_parameter_hints = true,
+                            parameter_hints_prefix = " » ",
+                            type_hints = true,
+                            type_hints_prefix = " » ",
+                            max_length = 80,
+                        },
+                        on_attach = function(client, bufnr)
+                            print("Rust Analyzer has been attached!")
+                            vim.lsp.inlay_hint.enable(true, { aligned = true, prefix = " » " })
+                            vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+                        end
                     }
                 end,
 
@@ -44,7 +72,7 @@ return {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
-				    runtime = { version = "Lua 5.1" },
+                                runtime = { version = "Lua 5.1" },
                                 diagnostics = {
                                     globals = { "vim", "it", "describe", "before_each", "after_each" },
                                 }
