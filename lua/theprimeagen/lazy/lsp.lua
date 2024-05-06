@@ -59,8 +59,7 @@ return {
                             max_length = 80,
                         },
                         on_attach = function(client, bufnr)
-                            print("Rust Analyzer has been attached!")
-                            vim.lsp.inlay_hint.enable(true, { aligned = true, prefix = " » " })
+                            vim.lsp.inlay_hint.enable(true)
                             vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
                         end
                     }
