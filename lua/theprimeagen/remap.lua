@@ -1,9 +1,37 @@
-
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- A function to move selected lines down in visual mode
+function move_lines_down_visual()
+	local current_line = vim.api.nvim_win_get_cursor(0)[1]
+	local last_line = vim.api.nvim_buf_line_count(0)
+
+	local selected_lines_count = vim.fn.line("'>") - vim.fn.line("'<")
+
+	if current_line + selected_lines_count < last_line then
+		vim.api.nvim_command("'<, '>m '>+1")
+		vim.api.nvim_command("normal! gv=gv")
+	-- When we hit the bottom we just reselect the lines
+	else
+		vim.api.nvim_command("normal! gv")
+	end
+end
+
+-- A function to move selected lines up in visual mode
+function move_lines_up_visual()
+	local current_line = vim.api.nvim_win_get_cursor(0)[1]
+
+	if current_line > 1 then
+		vim.api.nvim_command("'<, '>m '<-2")
+		vim.api.nvim_command("normal! gv=gv")
+	-- When we hit the top we just reselect the lines
+	else
+		vim.api.nvim_command("normal! gv")
+	end
+end
+
+vim.keymap.set('v', 'J', ':lua move_lines_down_visual()<CR>')
+vim.keymap.set('v', 'K', ':lua move_lines_up_visual()<CR>')
 
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
