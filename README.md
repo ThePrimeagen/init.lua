@@ -15,4 +15,8 @@ about though i would just suggest `git log -S`).
 * [4a96e645](https://github.com/ThePrimeagen/init.lua/commit/4a96e6457b0a0241ca7361ce62177aa6b9a33a38) fugitive mappings for push and pull
 * [a3bad06a](https://github.com/ThePrimeagen/init.lua/commit/a3bad06a4681c322538d609aa1c0bd18880f77c6) disabled eslint.  driving me crazy
 
+### Harpoon
+1. If you haven't already, `git clone` this repo into `~/.config/nvim` by doing `git clone https://github.com/ThePrimeagen/neovimrc.git ~/.config/nvim`
+2. Now that you have Prime's neovimrc in the right place, do `git clone https://github.com/ThePrimeagen/harpoon.git ~/personal/harpoon -b harpoon2`.
+    - The `-b` flag denotes that we should be checking out the `harpoon2` branch directly instead of `master`
 
