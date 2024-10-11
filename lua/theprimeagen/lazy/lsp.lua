@@ -29,11 +29,55 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "tailwindcss",
+                "intelephense",
+                "phpactor",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
+                    }
+                end,
+
+                ["phpactor"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.phpactor.setup {
+                        capabilities = capabilities,
+                        cmd = { "phpactor", "language-server" },
+                        on_attach = function(client, bufnr)
+                            client.server_capabilities.hoverProvider = false
+                            client.server_capabilities.documentSymbolProvider = false
+                            client.server_capabilities.referencesProvider = false
+                            client.server_capabilities.completionProvider = false
+                            client.server_capabilities.documentFormattingProvider = false
+                            client.server_capabilities.definitionProvider = false
+                            client.server_capabilities.implementationProvider = true
+                            client.server_capabilities.typeDefinitionProvider = false
+                            client.server_capabilities.diagnosticProvider = false
+                        end
+                    }
+                end,
+
+                ["intelephense"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.intelephense.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            php = {
+                                completion = {
+                                    callSnippet = "Replace"
+                                }
+                            },
+                            intelephense = {
+                                files = {
+                                    maxSize = 1000000
+                                }
+                            }
+                        },
+                        cmd = { "intelephense", "--stdio" },
+                        on_attach = function(client, bufnr)
+                            vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+                        end
                     }
                 end,
 
