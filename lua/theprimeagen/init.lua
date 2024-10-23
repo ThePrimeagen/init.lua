@@ -43,7 +43,7 @@ autocmd('TextYankPost', {
 autocmd({"BufWritePre"}, {
     group = ThePrimeagenGroup,
     pattern = "*",
-    command = [[%s/^\s\+$//e]],
+    command = [[%s/\s\+$//e]],
 })
 
 autocmd('BufEnter', {
