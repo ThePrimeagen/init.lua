@@ -1,6 +1,11 @@
 
 local local_plugins = {
     {
+        "caleb",
+        dir = "~/personal/caleb",
+        config = function() end
+    },
+    {
         "rfceez",
         dir = "~/personal/rfceez",
         config = function()
