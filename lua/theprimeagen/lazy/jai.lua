@@ -1,0 +1,4 @@
+return {
+    "rluba/jai.vim",
+}
+
