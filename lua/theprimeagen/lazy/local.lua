@@ -2,13 +2,13 @@
 local local_plugins = {
     {
         "streamer",
-        dir = "~/personal/eleven-streamer/",
+        dir = "~/personal/eleven-streamer",
         dependencies = {
-            "samsze0/websocket.nvim",
-            "samsze0/utils.nvim",
+            "livinglogic-nl/ws.nvim"
         },
         config = function() end
     },
+
 
     {
         "caleb",
