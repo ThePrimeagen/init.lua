@@ -11,15 +11,18 @@ return {
                 separate_diagnostic_server = false,
                 code_lens = "off",
                 jsx_close_tag = {
-                    enable = false,
+                    enable = true,
                     filetypes = { "typescriptreact", "javascriptreact" },
                 },
                 tsserver_plugins = {
                     "@styled/typescript-styled-plugin",
                 }
             },
+            opts = {
+                insertSpaceAfterKeywordsInControlFlowStatements = true,
+                insertSpaceAfterFunctionKeywordForAnonymousFunctions = true,
+                insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis = true,
+            },
         }
     end,
-    opts = {
-    },
 }
