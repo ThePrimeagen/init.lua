@@ -3,7 +3,9 @@ local local_plugins = {
     {
         "cockpit",
         dir = "~/personal/cockpit",
-        config = function() end
+        config = function()
+            require("cockpit")
+        end,
     },
 
     {
