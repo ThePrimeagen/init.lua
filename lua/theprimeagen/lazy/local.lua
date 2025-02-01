@@ -1,6 +1,12 @@
 
 local local_plugins = {
     {
+        "cockpit",
+        dir = "~/personal/cockpit",
+        config = function() end
+    },
+
+    {
         "streamer",
         dir = "~/personal/eleven-streamer",
         dependencies = {
