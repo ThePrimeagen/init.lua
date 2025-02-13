@@ -3,6 +3,7 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
@@ -24,13 +25,21 @@ return {
 
         require("fidget").setup({})
         require("mason").setup()
+        require("mason-tool-installer").setup({
+            ensure_installed = {
+                "php-cs-fixer",
+                "jsonlint",
+            },
+        })
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
+                "ts_ls",
                 "rust_analyzer",
                 "tailwindcss",
                 "intelephense",
                 "phpactor",
+                "eslint",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -105,6 +114,41 @@ return {
                         },
                         on_attach = function(client, bufnr)
                             vim.lsp.inlay_hint.enable(true)
+                            vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+                        end
+                    }
+                end,
+
+                ["ts_ls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.ts_ls.setup {
+                        capabilities = capabilities,
+                        cmd_env = {
+                            NODE_OPTIONS = "--max_old_space_size=8192"
+                        },
+                        inlay_hints = {
+                            show_parameter_hints = true,
+                            parameter_hints_prefix = " » ",
+                            type_hints = true,
+                            type_hints_prefix = " » ",
+                            max_length = 80,
+                        },
+                        on_attach = function(client, bufnr)
+                            vim.lsp.inlay_hint.enable(true)
+                            client.server_capabilities.documentFormattingProvider = false
+                        end
+                    }
+                end,
+
+                ["eslint"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.eslint.setup {
+                        capabilities = capabilities,
+                        cmd_env = {
+                            NODE_OPTIONS = "--max_old_space_size=8192"
+                        },
+                        on_attach = function(client, bufnr)
+                            client.server_capabilities.documentFormattingProvider = true
                             vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
                         end
                     }

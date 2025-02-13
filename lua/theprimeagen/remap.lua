@@ -55,3 +55,6 @@ vim.keymap.set("n", "<leader><leader>", function()
 end)
 
 vim.keymap.set("n", "<leader>bd", "<cmd>%bd|e#|bd#<cr>|'\"")
+vim.keymap.set("n", "<leader>ed", function()
+    vim.diagnostic.open_float()
+end)
