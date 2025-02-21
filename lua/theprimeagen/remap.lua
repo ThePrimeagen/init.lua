@@ -67,10 +67,10 @@ vim.keymap.set(
     "oif err != nil {<CR>}<Esc>O.logger.Error(\"error\", \"error\", err)<Esc>F.;i"
 )
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+vim.keymap.set("n", "<leader>ca", function()
+    require("cellular-automaton").start_animation("make_it_rain")
+end)
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
-
