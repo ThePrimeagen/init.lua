@@ -24,6 +24,13 @@ return {
             })
         end, { desc = "Debug: Running Nearest Test" })
 
+        vim.keymap.set("n", "<leader>ts", function()
+            require("neotest").run.run({
+                suite = true,
+                testify = true,
+            })
+        end, { desc = "Debug: Running Test Suite" })
+
         vim.keymap.set("n", "<leader>td", function()
             require("neotest").run.run({
                 suite = false,
