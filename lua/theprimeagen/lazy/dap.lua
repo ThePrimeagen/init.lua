@@ -1,5 +1,36 @@
 vim.api.nvim_create_augroup("DapGroup", { clear = true })
 
+local function navigate(args)
+    local buffer = args.buf
+
+    local wid = nil
+    local win_ids = vim.api.nvim_list_wins() -- Get all window IDs
+    for _, win_id in ipairs(win_ids) do
+        local win_bufnr = vim.api.nvim_win_get_buf(win_id)
+        if win_bufnr == buffer then
+            wid = win_id
+        end
+    end
+
+    if wid == nil then
+        return
+    end
+
+    vim.schedule(function()
+        if vim.api.nvim_win_is_valid(wid) then
+            vim.api.nvim_set_current_win(wid)
+        end
+    end)
+end
+
+local function create_nav_options(name)
+    return {
+        group = "DapGroup",
+        pattern = string.format("*%s*", name),
+        callback = navigate
+    }
+end
+
 return {
     {
         "mfussenegger/nvim-dap",
@@ -31,6 +62,7 @@ return {
                     elements = {
                         { id = name },
                     },
+                    enter = true,
                     size = 40,
                     position = "right",
                 }
@@ -43,7 +75,7 @@ return {
                 watches = { layout = layout("watches"), index = 0 },
                 breakpoints = { layout = layout("breakpoints"), index = 0 },
             }
-            local layouts = { }
+            local layouts = {}
 
             for name, config in pairs(name_to_layout) do
                 table.insert(layouts, config.layout)
@@ -62,11 +94,16 @@ return {
             end
 
             vim.keymap.set("n", "<leader>dr", function() toggle_debug_ui("repl") end, { desc = "Debug: toggle repl ui" })
-            vim.keymap.set("n", "<leader>ds", function() toggle_debug_ui("stacks") end, { desc = "Debug: toggle stacks ui" })
-            vim.keymap.set("n", "<leader>dw", function() toggle_debug_ui("watches") end, { desc = "Debug: toggle watches ui" })
-            vim.keymap.set("n", "<leader>db", function() toggle_debug_ui("breakpoints") end, { desc = "Debug: toggle breakpoints ui" })
-            vim.keymap.set("n", "<leader>dS", function() toggle_debug_ui("scopes") end, { desc = "Debug: toggle scopes ui" })
-            vim.keymap.set("n", "<leader>dc", function() toggle_debug_ui("console") end, { desc = "Debug: toggle console ui" })
+            vim.keymap.set("n", "<leader>ds", function() toggle_debug_ui("stacks") end,
+                { desc = "Debug: toggle stacks ui" })
+            vim.keymap.set("n", "<leader>dw", function() toggle_debug_ui("watches") end,
+                { desc = "Debug: toggle watches ui" })
+            vim.keymap.set("n", "<leader>db", function() toggle_debug_ui("breakpoints") end,
+                { desc = "Debug: toggle breakpoints ui" })
+            vim.keymap.set("n", "<leader>dS", function() toggle_debug_ui("scopes") end,
+                { desc = "Debug: toggle scopes ui" })
+            vim.keymap.set("n", "<leader>dc", function() toggle_debug_ui("console") end,
+                { desc = "Debug: toggle console ui" })
 
             vim.api.nvim_create_autocmd("BufEnter", {
                 group = "DapGroup",
@@ -76,7 +113,13 @@ return {
                 end,
             })
 
-            dapui.setup({layouts = layouts})
+            vim.api.nvim_create_autocmd("BufWinEnter", create_nav_options("dap-repl"))
+            vim.api.nvim_create_autocmd("BufWinEnter", create_nav_options("DAP Watches"))
+
+            dapui.setup({
+                layouts = layouts,
+                enter = true,
+            })
 
             dap.listeners.before.event_terminated.dapui_config = function()
                 dapui.close()
@@ -134,4 +177,3 @@ return {
         end,
     },
 }
-
