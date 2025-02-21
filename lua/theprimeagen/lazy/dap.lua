@@ -1,3 +1,5 @@
+vim.api.nvim_create_augroup("DapGroup", { clear = true })
+
 return {
     {
         "mfussenegger/nvim-dap",
@@ -65,6 +67,14 @@ return {
             vim.keymap.set("n", "<leader>db", function() toggle_debug_ui("breakpoints") end, { desc = "Debug: toggle breakpoints ui" })
             vim.keymap.set("n", "<leader>dS", function() toggle_debug_ui("scopes") end, { desc = "Debug: toggle scopes ui" })
             vim.keymap.set("n", "<leader>dc", function() toggle_debug_ui("console") end, { desc = "Debug: toggle console ui" })
+
+            vim.api.nvim_create_autocmd("BufEnter", {
+                group = "DapGroup",
+                pattern = "*dap-repl*",
+                callback = function()
+                    vim.wo.wrap = true
+                end,
+            })
 
             dapui.setup({layouts = layouts})
 
