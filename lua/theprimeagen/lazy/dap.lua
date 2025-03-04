@@ -90,7 +90,12 @@ return {
                     error(string.format("bad name: %s", name))
                 end
 
-                dapui.toggle(layout_config.index)
+                local uis = vim.api.nvim_list_uis()[1]
+                if uis ~= nil then
+                    layout_config.size = uis.width
+                end
+
+                pcall(dapui.toggle, layout_config.index)
             end
 
             vim.keymap.set("n", "<leader>dr", function() toggle_debug_ui("repl") end, { desc = "Debug: toggle repl ui" })

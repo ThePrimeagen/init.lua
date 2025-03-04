@@ -24,6 +24,10 @@ return {
             })
         end, { desc = "Debug: Running Nearest Test" })
 
+        vim.keymap.set("n", "<leader>tv", function()
+            require("neotest").summary.toggle()
+        end, { desc = "Debug: Summary Toggle" })
+
         vim.keymap.set("n", "<leader>ts", function()
             require("neotest").run.run({
                 suite = true,
@@ -41,6 +45,10 @@ return {
 
         vim.keymap.set("n", "<leader>to", function()
             require("neotest").output.open()
+        end, { desc = "Debug: Open test output" })
+
+        vim.keymap.set("n", "<leader>ta", function()
+            require("neotest").run.run(vim.fn.getcwd())
         end, { desc = "Debug: Open test output" })
 
     end
