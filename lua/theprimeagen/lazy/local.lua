@@ -1,6 +1,12 @@
 
 local local_plugins = {
     {
+        "vim-guys",
+        dir = "~/personal/vim-guys",
+        config = function()
+        end,
+    },
+    {
         "cockpit",
         dir = "~/personal/cockpit",
         config = function()
