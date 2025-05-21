@@ -25,7 +25,7 @@ return {
                 -- `false` will disable the whole extension
                 enable = true,
                 disable = function(lang, buf)
-                    if lang == "html" or lang == "go" then
+                    if lang == "html" then
                         print("disabled")
                         return true
                     end
