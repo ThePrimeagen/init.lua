@@ -23,10 +23,10 @@ local local_plugins = {
 				require("streamer").reload()
 			end)
 			vim.keymap.set("n", "<leader>es", function()
-				require("streamer.projects.unnamed_event").ue()
+				require("streamer").twitch_dashboard()
 			end)
 			vim.keymap.set("n", "<leader>en", function()
-				require("streamer.projects.unnamed_event").stop()
+				require("streamer").twitch_dashboard():stop()
 			end)
 		end,
 	},
@@ -92,11 +92,13 @@ local local_plugins = {
             --]]
 		end,
 	},
+
 	{
 		"vim-with-me",
 		dir = "~/personal/vim-with-me",
 		config = function() end,
 	},
+
 }
 
 return local_plugins
