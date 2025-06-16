@@ -35,9 +35,10 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<M-o>", function()
-    vim.cmd [[ silent !tmux new-window /home/theprimeagen/.local/bin/opencode-client ]]
-end)
+vim.keymap.set("n", "<M-h>", "<cmd>silent !tmux neww tmux-sessionizer -w one<CR>")
+vim.keymap.set("n", "<M-t>", "<cmd>silent !tmux neww tmux-sessionizer -w two<CR>")
+vim.keymap.set("n", "<M-n>", "<cmd>silent !tmux neww tmux-sessionizer -w three<CR>")
+vim.keymap.set("n", "<M-s>", "<cmd>silent !tmux neww tmux-sessionizer -w four<CR>")
 vim.keymap.set("n", "<leader>f", function()
     require("conform").format({ bufnr = 0 })
 end)
