@@ -11,8 +11,25 @@ return {
         require('telescope').setup({})
 
         local builtin = require('telescope.builtin')
-        vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-        vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+        -- search the current directory
+        vim.keymap.set('n', '<leader>pp', function()
+            local Cdir = vim.fn.expand('%:p')
+            if Cdir == "" then
+                builtin.find_files()
+            else
+                Cdir = string.gsub(Cdir, "oil://", "");
+                Cdir = string.gsub(Cdir, "[^/]+%.%w+$", "");
+                print(Cdir);
+                builtin.find_files({ cwd = Cdir })
+            end
+        end, {})
+        -- fixed so even if you use this: nvim /path/to/your/project, git will be detected
+        vim.keymap.set('n', '<C-p>', function()
+                local Cdir = vim.fn.expand("%:p")
+                Cdir = string.gsub(Cdir, "oil://", "")
+                Cdir = string.gsub(Cdir, "[^/]+%.%w+$", "")
+                builtin.git_files({ cwd = Cdir })
+            end, {})
         vim.keymap.set('n', '<leader>pws', function()
             local word = vim.fn.expand("<cword>")
             builtin.grep_string({ search = word })
