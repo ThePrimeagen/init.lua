@@ -16,6 +16,10 @@ local local_plugins = {
 	--},
 
 	{
+		"the-stru",
+		dir = "~/personal/the-stru",
+    },
+	{
 		"streamer",
 		dir = "~/personal/eleven-streamer",
 		config = function()
