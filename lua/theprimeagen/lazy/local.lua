@@ -18,7 +18,34 @@ local local_plugins = {
 	{
 		"the-stru",
 		dir = "~/personal/the-stru",
-    },
+	},
+	{
+		"cursor_agent",
+		dir = "~/personal/cursor_in_neovim/",
+		dependencies = { "nvim-lua/plenary.nvim" }, -- optional, improves HTTP; falls back to curl if absent
+		config = function()
+			require("cursor_agent").setup({
+				-- optional config
+				ui = {
+					width = 60, -- panel width in columns
+					input_height = 3, -- input box height
+					border = "rounded",
+				},
+				provider = {
+					name = "openai", -- or "anthropic"
+					openai = {
+						model = "gpt-4o-mini",
+					},
+					anthropic = {
+						model = "claude-3-5-sonnet-20240620",
+						version = "2023-06-01",
+						max_tokens = 1024,
+					},
+				},
+			})
+		end,
+	},
+
 	{
 		"streamer",
 		dir = "~/personal/eleven-streamer",
@@ -87,8 +114,7 @@ local local_plugins = {
 	{
 		"vim-apm",
 		dir = "~/personal/vim_apm",
-		config = function()
-		end,
+		config = function() end,
 	},
 
 	{
@@ -96,7 +122,6 @@ local local_plugins = {
 		dir = "~/personal/vim-with-me",
 		config = function() end,
 	},
-
 }
 
 return local_plugins
