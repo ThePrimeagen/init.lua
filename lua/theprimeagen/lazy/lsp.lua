@@ -93,20 +93,7 @@ return {
                     local lspconfig = require("lspconfig")
                     lspconfig.tailwindcss.setup({
                         capabilities = capabilities,
-                        filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
-                        settings = {
-                            tailwindCSS = {
-                                experimental = {
-                                    classRegex = {
-                                        "tw`([^`]*)",
-                                        "tw=\"([^\"]*)",
-                                        "tw={\"([^\"}]*)",
-                                        "tw\\.\\w+`([^`]*)",
-                                        "tw\\(.*?\\)`([^`]*)",
-                                    },
-                                },
-                            },
-                        },
+                        filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte", "heex" },
                     })
                 end,
             }
