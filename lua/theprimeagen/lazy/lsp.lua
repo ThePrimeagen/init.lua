@@ -53,6 +53,29 @@ return {
                     vim.g.zig_fmt_autosave = 0
 
                 end,
+                ["rust_analyzer"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.rust_analyzer.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            ["rust-analyzer"] = {
+                                checkOnSave = {
+                                    command = "check",
+                                    allTargets = false
+                                },
+                                diagnostics = {
+                                    disabled = {"E0133"} -- Disable false unsafe code warnings
+                                },
+                                cargo = {
+                                    buildScripts = {
+                                        enable = true -- Enable build scripts
+                                    },
+                                    loadOutDirsFromCheck = true
+                                }
+                            }
+                        }
+                    }
+                end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {
@@ -85,14 +108,16 @@ return {
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' }, -- For luasnip users.
+                { name = 'codeium', priority = 1000 },
+                { name = 'nvim_lsp', priority = 800 },
+                { name = 'luasnip', priority = 600 },
             }, {
-                { name = 'buffer' },
+                { name = 'buffer', priority = 400 },
             })
         })
 
         vim.diagnostic.config({
+            virtual_text = true,
             -- update_in_insert = true,
             float = {
                 focusable = false,

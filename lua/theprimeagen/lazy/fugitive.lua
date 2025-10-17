@@ -1,7 +1,10 @@
 return {
     "tpope/vim-fugitive",
+    dependencies = {
+        "tpope/vim-rhubarb", -- GitHub support for fugitive
+    },
     config = function() 
-        vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+        vim.keymap.set("n", "<leader>gs", vim.cmd.Git) -- Git status
 
         local ThePrimeagen_Fugitive = vim.api.nvim_create_augroup("ThePrimeagen_Fugitive", {})
 
@@ -34,5 +37,6 @@ return {
 
         vim.keymap.set("n", "gu", "<cmd>diffget //2<CR>")
         vim.keymap.set("n", "gh", "<cmd>diffget //3<CR>")
+        vim.keymap.set("n", "<leader>pl", "<cmd>GBrowse!<CR>") -- Copy GitHub permalink
     end
 }
