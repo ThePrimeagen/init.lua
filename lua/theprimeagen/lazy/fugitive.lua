@@ -37,6 +37,7 @@ return {
 
         vim.keymap.set("n", "gu", "<cmd>diffget //2<CR>")
         vim.keymap.set("n", "gh", "<cmd>diffget //3<CR>")
-        vim.keymap.set("n", "<leader>pl", "<cmd>GBrowse!<CR>") -- Copy GitHub permalink
+        vim.keymap.set("n", "<leader>gb", "<cmd>GitLink blame<CR>") -- Git blame link for browser
+        vim.keymap.set("n", "<leader>pl", "<cmd>GitLink<CR>") -- Copy GitHub permalink with line number
     end
 }

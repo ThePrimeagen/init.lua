@@ -8,7 +8,17 @@ return {
     },
 
     config = function()
-        require('telescope').setup({})
+        require('telescope').setup({
+            defaults = {
+                sorting_strategy = "ascending",
+                layout_strategy = "horizontal",
+                layout_config = {
+                    prompt_position = "top",
+                },
+                dynamic_preview_title = true,
+                results_title = "Results",
+            },
+        })
 
         local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
@@ -23,6 +33,12 @@ return {
         end)
         vim.keymap.set('n', '<leader>ps', function()
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
+        end)
+        vim.keymap.set('n', '<leader>pd', function()
+            local current_file_dir = vim.fn.expand("%:p:h")
+            builtin.live_grep({
+                search_dirs = { vim.fn.input("Directory: ", current_file_dir .. "/", "dir") }
+            })
         end)
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
         vim.keymap.set('n', '<leader>pr', builtin.resume, {}) -- Resume last telescope search

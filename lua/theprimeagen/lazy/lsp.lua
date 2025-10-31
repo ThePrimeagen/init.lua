@@ -59,18 +59,19 @@ return {
                         capabilities = capabilities,
                         settings = {
                             ["rust-analyzer"] = {
-                                checkOnSave = {
-                                    command = "check",
-                                    allTargets = false
-                                },
+                                checkOnSave = false,
                                 diagnostics = {
                                     disabled = {"E0133"} -- Disable false unsafe code warnings
+                                },
+                                rustfmt = {
+                                    extraArgs = {"--edition", "2021"}
                                 },
                                 cargo = {
                                     buildScripts = {
                                         enable = true -- Enable build scripts
                                     },
-                                    loadOutDirsFromCheck = true
+                                    loadOutDirsFromCheck = true,
+                                    features = "all" -- Enable all features
                                 }
                             }
                         }
@@ -104,7 +105,7 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                ['<CR>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({

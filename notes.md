@@ -47,6 +47,8 @@ See https://github.com/ThePrimeagen/neovimrc/issues/5
 `ctrl g` next occurence
 `ctrl t` prev occurence
 `\c` case insensitive search
+`*` highlight next occurrence of word under cursor
+`#` highlight previous occurrence of word under cursor
 
 
 
