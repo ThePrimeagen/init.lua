@@ -21,7 +21,9 @@ return {
         })
 
         local builtin = require('telescope.builtin')
-        vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+        vim.keymap.set('n', '<leader>pf', function() 
+            builtin.find_files({ cwd = vim.fn.getcwd() }) -- Search from current working directory
+        end)
         vim.keymap.set('n', '<C-p>', builtin.git_files, {})
         vim.keymap.set('n', '<leader>pws', function()
             local word = vim.fn.expand("<cword>")
@@ -43,7 +45,7 @@ return {
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
         vim.keymap.set('n', '<leader>pr', builtin.resume, {}) -- Resume last telescope search
 
-        vim.keymap.set('n', '<leader>g', builtin.lsp_references, {})
+        vim.keymap.set('n', 'gr', builtin.lsp_references, {})
     end
 }
 

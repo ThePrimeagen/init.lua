@@ -59,7 +59,7 @@ return {
                         capabilities = capabilities,
                         settings = {
                             ["rust-analyzer"] = {
-                                checkOnSave = false,
+                                checkOnSave = true,
                                 diagnostics = {
                                     disabled = {"E0133"} -- Disable false unsafe code warnings
                                 },
@@ -105,7 +105,7 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                ['<CR>'] = cmp.mapping.confirm({ select = false }),
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
