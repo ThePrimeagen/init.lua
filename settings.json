@@ -1,0 +1,104 @@
+{
+    "window.commandCenter": 1,
+    "workbench.colorTheme": "Catppuccin Macchiato",
+    "editor.bracketPairColorization.enabled": false,
+    "editor.guides.highlightActiveBracketPair": false,
+    "editor.codeActionsOnSave": {},
+    "remote.SSH.remotePlatform": {
+        "workspace-jayant-workspace": "linux"
+    },
+    // Make font look more like intellij
+    "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 13,
+    "editor.lineHeight": 20,
+    "editor.letterSpacing": 0,
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "400",
+    // Strip styles from semantic tokens (some themes underline/italicize)
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true,
+        "rules": {
+            "*": {
+                "italic": false,
+                "underline": false,
+                "bold": false
+            }
+        }
+    },
+    // Strip styles from TextMate scopes (all languages)
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "comment",
+                    "comment.line",
+                    "comment.block",
+                    "keyword",
+                    "keyword.control",
+                    "keyword.operator",
+                    "storage",
+                    "storage.type",
+                    "storage.modifier",
+                    "variable",
+                    "variable.language",
+                    "variable.parameter",
+                    "variable.other",
+                    "entity.name",
+                    "entity.name.function",
+                    "entity.name.type",
+                    "entity.other.inherited-class",
+                    "entity.other.attribute-name",
+                    "support.function",
+                    "support.type",
+                    "support.class",
+                    "string",
+                    "constant",
+                    "markup.italic",
+                    "markup.bold",
+                    "markup.underline",
+                    "markup.heading",
+                    "markup.quote",
+                    "meta.import",
+                    "meta.function-call"
+                ],
+                "settings": {
+                    "fontStyle": ""
+                }
+            }
+        ]
+    },
+    // Disable all inlay hints
+    "rust-analyzer.inlayHints.typeHints.enable": false,
+    "rust-analyzer.inlayHints.parameterHints.enable": false,
+    "rust-analyzer.inlayHints.chainingHints.enable": false,
+    "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "never",
+    "rust-analyzer.inlayHints.bindingModeHints.enable": false,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        }
+    ]
+}
