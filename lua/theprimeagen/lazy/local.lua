@@ -1,10 +1,4 @@
 local local_plugins = {
-	{
-	   "dreamy",
-	   dir = "~/personal/dreamy",
-	   config = function()
-	   end,
-	},
 	--{
 	--    "cockpit",
 	--    dir = "~/personal/cockpit",
@@ -15,6 +9,13 @@ local local_plugins = {
 	--    end,
 	--},
 
+	{
+		"99",
+		dir = "~/personal/99",
+        config = function()
+
+        end,
+	},
 	{
 		"the-stru",
 		dir = "~/personal/the-stru",
