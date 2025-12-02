@@ -4,6 +4,21 @@ A powerful Neovim configuration with LSP, Telescope, Harpoon, and more.
 
 Originally forked from [ThePrimeagen's init.lua](https://github.com/ThePrimeagen/init.lua).
 
+## Features
+
+- **LSP Support** - Full language server support with Mason auto-installer
+- **Fuzzy Finding** - Telescope for file and text searching
+- **Git Integration** - Fugitive for git commands + Gitsigns for inline changes
+- **Quick Navigation** - Harpoon for instant file switching
+- **Statusline** - Lualine with git, diagnostics, and file info
+- **Which-Key** - Popup showing available keybindings as you type
+- **File Explorer** - Oil.nvim for intuitive file management
+- **Autocomplete** - nvim-cmp with LSP integration
+- **Syntax Highlighting** - Treesitter for better code highlighting
+- **Diagnostics** - Trouble for pretty diagnostic lists
+- **Testing** - Neotest integration for running tests
+- **And more!** - Undotree, Zen mode, snippets, and more
+
 ## Prerequisites
 
 Before installing this configuration, you need to have the following installed on your Mac:
@@ -180,6 +195,27 @@ These keybindings are available when an LSP server is attached to the buffer.
 | n | `<leader>P` | Git pull with rebase |
 | n | `<leader>t` | Git push and set upstream (prompts for branch) |
 
+### Git Signs (Inline Git Changes)
+
+| Mode | Keybinding | Action |
+|------|-----------|--------|
+| n | `]c` | Next hunk (git change) |
+| n | `[c` | Previous hunk (git change) |
+| n | `<leader>hs` | Stage hunk |
+| n | `<leader>hr` | Reset hunk |
+| v | `<leader>hs` | Stage selected lines |
+| v | `<leader>hr` | Reset selected lines |
+| n | `<leader>hS` | Stage entire buffer |
+| n | `<leader>hR` | Reset entire buffer |
+| n | `<leader>hu` | Undo stage hunk |
+| n | `<leader>hp` | Preview hunk |
+| n | `<leader>hb` | Show full blame for line |
+| n | `<leader>tb` | Toggle inline git blame |
+| n | `<leader>hd` | Diff this file |
+| n | `<leader>hD` | Diff this file against HEAD~ |
+| n | `<leader>td` | Toggle deleted lines view |
+| o/x | `ih` | Select hunk (text object) |
+
 ### Undotree
 
 | Mode | Keybinding | Action |
@@ -277,6 +313,9 @@ These keybindings are available when an LSP server is attached to the buffer.
 - Trailing whitespace is automatically removed on save
 - ESLint auto-fix runs on save for JavaScript/TypeScript files
 - Undo history is persisted to `~/.vim/undodir`
+- **Which-Key** popup appears after 300ms when you start a key sequence (e.g., press `<leader>` and wait)
+- **Lualine** statusline shows mode, git branch, diagnostics, file info, and more at the bottom
+- **Gitsigns** adds git change indicators in the sign column (gutter) for modified/added/deleted lines
 
 ## Troubleshooting
 
