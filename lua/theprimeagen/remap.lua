@@ -12,12 +12,13 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
 
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
+-- Commented out - vim-with-me is a personal plugin not available
+-- vim.keymap.set("n", "<leader>vwm", function()
+--     require("vim-with-me").StartVimWithMe()
+-- end)
+-- vim.keymap.set("n", "<leader>svwm", function()
+--     require("vim-with-me").StopVimWithMe()
+-- end)
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -68,4 +69,9 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- Terminal keybindings
+vim.keymap.set("n", "<leader>tv", "<cmd>vsplit | terminal<CR>")         -- vertical split
+vim.keymap.set("n", "<leader>th", "<cmd>belowright split | terminal<CR>")   -- horizontal split at bottom
+vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>")                     -- escape terminal mode
 

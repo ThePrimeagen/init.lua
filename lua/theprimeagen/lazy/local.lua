@@ -14,8 +14,9 @@ local local_plugins = {
         end
     },
     {
-        "harpoon",
-        dir = "~/personal/harpoon",
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             local harpoon = require("harpoon")
 
@@ -35,21 +36,22 @@ local local_plugins = {
             vim.keymap.set("n", "<leader><C-s>", function() harpoon:list():replace_at(4) end)
         end
     },
-    {
-        "vim-apm", dir = "~/personal/vim-apm",
-        config = function()
-            --[[
-            local apm = require("vim-apm")
-
-            apm:setup({})
-            vim.keymap.set("n", "<leader>apm", function() apm:toggle_monitor() end)
-            --]]
-        end
-    },
-    {
-        "vim-with-me", dir = "~/personal/vim-with-me",
-        config = function() end
-    },
+    -- Commented out - these are ThePrimeagen's personal local plugins
+    -- {
+    --     "vim-apm", dir = "~/personal/vim-apm",
+    --     config = function()
+    --         --[[
+    --         local apm = require("vim-apm")
+    --
+    --         apm:setup({})
+    --         vim.keymap.set("n", "<leader>apm", function() apm:toggle_monitor() end)
+    --         --]]
+    --     end
+    -- },
+    -- {
+    --     "vim-with-me", dir = "~/personal/vim-with-me",
+    --     config = function() end
+    -- },
 }
 
 return local_plugins
