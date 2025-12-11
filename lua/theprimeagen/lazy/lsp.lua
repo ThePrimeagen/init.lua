@@ -1,14 +1,3 @@
-local root_files = {
-  '.luarc.json',
-  '.luarc.jsonc',
-  '.luacheckrc',
-  '.stylua.toml',
-  'stylua.toml',
-  'selene.toml',
-  'selene.yml',
-  '.git',
-}
-
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -45,6 +34,7 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "gopls",
+                "vtsls",
                 "tailwindcss",
             },
             handlers = {

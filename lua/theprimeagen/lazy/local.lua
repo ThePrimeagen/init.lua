@@ -12,9 +12,27 @@ local local_plugins = {
 	{
 		"99",
 		dir = "~/personal/99",
-        config = function()
-
-        end,
+		config = function()
+			local _99 = require("99")
+            local cwd = vim.uv.cwd()
+            local basename = vim.fs.basename(cwd)
+			_99.setup({
+				logger = {
+					level = _99.DEBUG,
+					path = "/tmp/" .. basename .. ".99.debug",
+					print_on_error = true,
+				},
+				md_files = {
+					"AGENT.md",
+				},
+			})
+			vim.keymap.set("n", "<leader>ff", function()
+				_99.fill_in_function()
+			end)
+			vim.keymap.set("n", "<leader>if", function()
+				_99.implement_fn()
+			end)
+		end,
 	},
 	{
 		"the-stru",
@@ -39,21 +57,20 @@ local local_plugins = {
 				harpoon.ui:toggle_quick_menu(harpoon:list())
 			end)
 
-			vim.keymap.set("n", "<C-1>", function()
+			vim.keymap.set("n", "<M-1>", function()
 				harpoon:list():select(1)
 			end)
-			vim.keymap.set("n", "<C-2>", function()
+			vim.keymap.set("n", "<M-2>", function()
 				harpoon:list():select(2)
 			end)
-			vim.keymap.set("n", "<C-3>", function()
+			vim.keymap.set("n", "<M-3>", function()
 				harpoon:list():select(3)
 			end)
-			vim.keymap.set("n", "<C-4>", function()
+			vim.keymap.set("n", "<M-4>", function()
 				harpoon:list():select(4)
 			end)
 		end,
 	},
-
 }
 
 return local_plugins
