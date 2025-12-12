@@ -59,7 +59,7 @@ return {
                         capabilities = capabilities,
                         settings = {
                             ["rust-analyzer"] = {
-                                checkOnSave = true,
+                                checkOnSave = false,
                                 diagnostics = {
                                     disabled = {"E0133"} -- Disable false unsafe code warnings
                                 },
