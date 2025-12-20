@@ -59,12 +59,27 @@ return {
                         capabilities = capabilities,
                         settings = {
                             ["rust-analyzer"] = {
-                                checkOnSave = false,
+                                -- Enable cargo diagnostics so Rust errors show up in-editor (otherwise you may see
+                                -- very few/no diagnostics unless rust-analyzer can infer them without running cargo).
                                 diagnostics = {
-                                    disabled = {"E0133"} -- Disable false unsafe code warnings
+                                    enable = true,
+                                    enableExperimental = false,
+                                    -- rust-analyzer proc-macro noise / warnings (see:
+                                    -- https://users.rust-lang.org/t/how-to-disable-rust-analyzer-proc-macro-warnings-in-neovim/53150)
+                                    --
+                                    -- - unresolved-proc-macro: "proc macro not expanded" style warnings
+                                    -- - proc-macro-disabled: "proc-macro is explicitly disabled" (e.g. when we ignore tokio-macros below)
+                                    disabled = {"E0133", "unresolved-proc-macro", "proc-macro-disabled"} -- Disable false unsafe code warnings + proc-macro noise
                                 },
-                                rustfmt = {
-                                    extraArgs = {"--edition", "2021"}
+                                procMacro = {
+                                    enable = true,
+                                    ignored = {
+                                        -- rust-analyzer + #[tokio::test]/#[tokio::main] can sometimes send "go to definition"
+                                        -- into macro-expanded tokio internals (e.g. runtime builder) instead of your symbol.
+                                        -- Ignoring these tokio attribute macros keeps proc-macro support for things like
+                                        -- async_trait while making navigation more reliable in tokio tests.
+                                        ["tokio-macros"] = { "test", "main" },
+                                    },
                                 },
                                 cargo = {
                                     buildScripts = {

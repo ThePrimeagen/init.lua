@@ -14,6 +14,12 @@ return {
                 layout_strategy = "horizontal",
                 layout_config = {
                     prompt_position = "top",
+                    -- Make Telescope bigger by default (relative to the editor size).
+                    width = 0.95,
+                    height = 0.95,
+                    horizontal = {
+                        preview_width = 0.60,
+                    },
                 },
                 dynamic_preview_title = true,
                 results_title = "Results",
