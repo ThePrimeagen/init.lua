@@ -26,10 +26,13 @@ local local_plugins = {
 					"AGENT.md",
 				},
 			})
-			vim.keymap.set("n", "<leader>ff", function()
+			vim.keymap.set("n", "<leader>9f", function()
 				_99.fill_in_function()
 			end)
-			vim.keymap.set("n", "<leader>if", function()
+			vim.keymap.set("n", "<leader>9i", function()
+				_99.implement_fn()
+			end)
+			vim.keymap.set("v", "<leader>9v", function()
 				_99.implement_fn()
 			end)
 		end,
