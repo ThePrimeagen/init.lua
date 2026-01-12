@@ -77,7 +77,19 @@ vim.keymap.set("n", "<leader>ca", function()
     require("cellular-automaton").start_animation("make_it_rain")
 end)
 
+--vim.keymap.set("n", "<leader><leader>", function()
+--    vim.cmd("so")
+--end)
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	-- save file
+	vim.cmd.w()
+	-- if lua file and is in nvim config dir :so the file
+	local current_file_path = vim.api.nvim_buf_get_name(0)
+	local is_in_config = current_file_path:find("^"..vim.fn.stdpath("config")) ~= nil
+	local is_lua = current_file_path:find(".lua$") ~= nil
+	if (is_in_config and is_lua) then
+		vim.cmd.so()
+	end
+	-- probally I could do to another languages
 end)
 
