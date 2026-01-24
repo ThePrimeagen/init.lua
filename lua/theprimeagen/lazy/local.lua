@@ -14,26 +14,51 @@ local local_plugins = {
 		dir = "~/personal/99",
 		config = function()
 			local _99 = require("99")
-            local cwd = vim.uv.cwd()
-            local basename = vim.fs.basename(cwd)
 			_99.setup({
-				logger = {
-					level = _99.DEBUG,
-					path = "/tmp/" .. basename .. ".99.debug",
-					print_on_error = true,
-				},
 				md_files = {
-					"AGENT.md",
+					"AGENTS.md",
+				},
+				completion = {
+					custom_rules = {
+						"~/.behaviors/",
+                        "/home/theprimeagen/personal/skills/skills/cloudflare/",
+					},
+					source = "cmp",
 				},
 			})
-			vim.keymap.set("n", "<leader>9f", function()
+			vim.keymap.set("n", "<leader>9ff", function()
 				_99.fill_in_function()
 			end)
-			vim.keymap.set("n", "<leader>9i", function()
-				_99.implement_fn()
+			vim.keymap.set("n", "<leader>9fp", function()
+				_99.fill_in_function_prompt()
 			end)
-			vim.keymap.set("v", "<leader>9v", function()
-				_99.implement_fn()
+			vim.keymap.set("n", "<leader>9fd", function()
+				_99.fill_in_function({
+					additional_rules = {
+                        _99:rule_from_path("~/.behaviors/debug.md"),
+					},
+				})
+			end)
+			vim.keymap.set("v", "<leader>9vv", function()
+				_99.visual()
+			end)
+			vim.keymap.set("v", "<leader>9vp", function()
+				_99.visual_prompt()
+			end)
+			vim.keymap.set("n", "<leader>9s", function()
+				_99.stop_all_requests()
+			end)
+			vim.keymap.set("n", "<leader>9i", function()
+				_99.info()
+			end)
+			vim.keymap.set("n", "<leader>9l", function()
+				_99.view_logs()
+			end)
+			vim.keymap.set("n", "<leader>9n", function()
+				_99.next_request_logs()
+			end)
+			vim.keymap.set("n", "<leader>9p", function()
+				_99.prev_request_logs()
 			end)
 		end,
 	},
