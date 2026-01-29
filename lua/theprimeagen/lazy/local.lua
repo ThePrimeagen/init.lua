@@ -61,10 +61,10 @@ local local_plugins = {
 			end)
 		end,
 	},
-	{
-		"the-stru",
-		dir = "~/personal/the-stru",
-	},
+	-- {
+	-- 	"the-stru",
+	-- 	dir = "~/personal/the-stru",
+	-- },
 
 	{
 		"harpoon",
