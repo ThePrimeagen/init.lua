@@ -20,8 +20,7 @@ local local_plugins = {
 				},
 				completion = {
 					custom_rules = {
-						"~/.behaviors/",
-                        "/home/theprimeagen/personal/skills/skills/cloudflare/",
+                        "~/personal/skills/skills/",
 					},
 					source = "cmp",
 				},
