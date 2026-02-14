@@ -1,7 +1,10 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-        branch = "master",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
+		branch = "master",
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				-- A list of parser names, or "all"
