@@ -16,3 +16,34 @@ about though i would just suggest `git log -S`).
 * [a3bad06a](https://github.com/ThePrimeagen/init.lua/commit/a3bad06a4681c322538d609aa1c0bd18880f77c6) disabled eslint.  driving me crazy
 
 
+### Clean neovim install to get to start of video
+
+**Linux**
+
+_Assumes you have a clean install without a previous neovim install_
+1. Go to your home directory
+```
+cd ~
+```
+2. Download the latest AppImage
+```
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+
+./nvim.appimage
+```
+3. Give the AppImage permissions
+```
+chmod u+x ~/nvim.appimage
+```
+4. Move the AppImage to your local bin
+```
+sudo mv ~/nvim.appimage /usr/bin/nvim
+```
+5. Verify the install
+```
+nvim --version
+```
+6. Start the video
+```
+`nvim .`
+```
