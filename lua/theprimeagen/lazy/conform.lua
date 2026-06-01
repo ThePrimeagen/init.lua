@@ -12,6 +12,7 @@ return {
 				cpp = { "clang-format" },
 				lua = { "stylua" },
 				go = { "gofmt" },
+				odin = { "odinfmt" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				elixir = { "mix" },
