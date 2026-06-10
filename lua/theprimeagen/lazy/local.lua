@@ -15,17 +15,18 @@ local local_plugins = {
 		config = function()
 			local _99 = require("99")
 			_99.setup({
-                show_in_flight_requests = true,
+				provider = _99.Providers.CursorAgentProvider,
+				show_in_flight_requests = true,
 				md_files = {
 					"AGENTS.md",
 				},
 				completion = {
 					custom_rules = {
-                        "~/personal/skills/skills/",
+						"~/personal/skills/skills/",
 					},
 					source = "cmp",
 				},
-                model = "openai/gpt-5.3-codex",
+				model = "openai/gpt-5.3-codex",
 			})
 			vim.keymap.set("n", "<leader>9s", function()
 				_99.search()
