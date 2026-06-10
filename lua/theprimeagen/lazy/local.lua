@@ -26,7 +26,7 @@ local local_plugins = {
 					},
 					source = "cmp",
 				},
-				model = "openai/gpt-5.3-codex",
+				model = "composer-2.5-fast",
 			})
 			vim.keymap.set("n", "<leader>9s", function()
 				_99.search()
