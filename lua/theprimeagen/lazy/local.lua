@@ -10,6 +10,27 @@ local local_plugins = {
 	--},
 
 	{
+		"55",
+		dir = "~/personal/55",
+		config = function()
+			local _55 = require("55")
+			_55.setup({
+				name_map = {
+					un2 = "unnamed_game_1",
+				},
+			})
+			vim.keymap.set("n", "<leader>55", function()
+				_55.start()
+			end)
+			vim.keymap.set("n", "<leader>5h", function()
+				_55.home()
+			end)
+			vim.keymap.set("n", "<leader>5i", function()
+				_55.inspect()
+			end)
+		end,
+	},
+	{
 		"99",
 		dir = "~/personal/99",
 		config = function()
