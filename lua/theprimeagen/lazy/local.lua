@@ -18,6 +18,14 @@ local local_plugins = {
 				name_map = {
 					un2 = "unnamed_game_1",
 				},
+				linear = {
+					projects = {
+						unnamed_game_1 = {
+							team = "Mordoria",
+							project = "Mordoria",
+						},
+					},
+				},
 			})
 			vim.keymap.set("n", "<leader>55", function()
 				_55.start()
