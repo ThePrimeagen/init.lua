@@ -15,6 +15,7 @@ return {
 				odin = { "odinfmt" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
+				json = { "prettier" },
 				elixir = { "mix" },
 			},
 			formatters = {
