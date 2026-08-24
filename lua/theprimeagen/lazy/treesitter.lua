@@ -47,14 +47,18 @@ return {
 		config = function()
 			require("nvim-treesitter-textobjects").setup({
 				select = {
-					enable = true,
 					lookahead = true,
-					keymaps = {
-						["af"] = "@function.outer",
-						["if"] = "@function.inner",
-					},
 				},
 			})
+
+			local select = require("nvim-treesitter-textobjects.select")
+
+			vim.keymap.set({ "x", "o" }, "af", function()
+				select.select_textobject("@function.outer", "textobjects")
+			end)
+			vim.keymap.set({ "x", "o" }, "if", function()
+				select.select_textobject("@function.inner", "textobjects")
+			end)
 		end,
 	},
 }
