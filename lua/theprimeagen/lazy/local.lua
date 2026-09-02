@@ -9,45 +9,45 @@ local local_plugins = {
 	--    end,
 	--},
 
-	{
-		"55",
-		dir = "~/personal/55",
-		config = function()
-			local _55 = require("55")
-			_55.setup({
-				name_map = {
-					un2 = "unnamed_game_1",
-				},
-				linear = {
-					projects = {
-						unnamed_game_1 = {
-							team = "Mordoria",
-							project = "Mordoria",
-						},
-					},
-				},
-			})
-			vim.keymap.set("n", "<leader>55", function()
-				_55.start()
-			end)
-			vim.keymap.set("n", "<leader>5t", function()
-				_55.toggle_diff_lines()
-			end)
-			vim.keymap.set("n", "<leader>5r", function()
-				_55.toggle_diff_lines()
-				_55.toggle_diff_lines()
-			end)
-			vim.keymap.set("n", "<leader>5s", function()
-				_55.refresh_server()
-			end)
-			vim.keymap.set("n", "<leader>5h", function()
-				_55.home()
-			end)
-			vim.keymap.set("n", "<leader>5i", function()
-				_55.inspect()
-			end)
-		end,
-	},
+	-- {
+	-- 	"55",
+	-- 	dir = "~/personal/55",
+	-- 	config = function()
+	-- 		-- local _55 = require("55")
+	-- 		-- _55.setup({
+	-- 		-- 	name_map = {
+	-- 		-- 		un2 = "unnamed_game_1",
+	-- 		-- 	},
+	-- 		-- 	linear = {
+	-- 		-- 		projects = {
+	-- 		-- 			unnamed_game_1 = {
+	-- 		-- 				team = "Mordoria",
+	-- 		-- 				project = "Mordoria",
+	-- 		-- 			},
+	-- 		-- 		},
+	-- 		-- 	},
+	-- 		-- })
+	-- 		-- vim.keymap.set("n", "<leader>55", function()
+	-- 		-- 	_55.start()
+	-- 		-- end)
+	-- 		-- vim.keymap.set("n", "<leader>5t", function()
+	-- 		-- 	_55.toggle_diff_lines()
+	-- 		-- end)
+	-- 		-- vim.keymap.set("n", "<leader>5r", function()
+	-- 		-- 	_55.toggle_diff_lines()
+	-- 		-- 	_55.toggle_diff_lines()
+	-- 		-- end)
+	-- 		-- vim.keymap.set("n", "<leader>5s", function()
+	-- 		-- 	_55.refresh_server()
+	-- 		-- end)
+	-- 		-- vim.keymap.set("n", "<leader>5h", function()
+	-- 		-- 	_55.home()
+	-- 		-- end)
+	-- 		-- vim.keymap.set("n", "<leader>5i", function()
+	-- 		-- 	_55.inspect()
+	-- 		-- end)
+	-- 	end,
+	-- },
 	{
 		"99",
 		dir = "~/personal/99",
@@ -65,7 +65,7 @@ local local_plugins = {
 					},
 					source = "cmp",
 				},
-				model = "composer-2.5-fast",
+				model = "cursor-grok-4.6-xhigh-fast",
 			})
 			vim.keymap.set("n", "<leader>9s", function()
 				_99.search()
